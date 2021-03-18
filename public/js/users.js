@@ -1,5 +1,5 @@
 function deleteUser(userID) {
-    fetch("http://laravel.loc/users/" + userID, {
+    fetch("/users/" + userID, {
         method: 'DELETE',
     })
         .then((res) => res.text())
@@ -12,7 +12,7 @@ function addNewUser() {
 
 
 function editUser(userID) {
-    fetch("http://laravel.loc/users/" + userID, {
+    fetch("/users/" + userID, {
         method: 'GET',
     })
         .then((res) => res.text())

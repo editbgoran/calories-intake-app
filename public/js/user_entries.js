@@ -18,7 +18,7 @@ function sendEntryDataToBackend() {
 }
 
 function editEntry(id) {
-    fetch("http://laravel.loc/user/entries/" + id, {
+    fetch("/user/entries/" + id, {
         method: 'GET',
     })
         .then((res) => res.text())
@@ -35,7 +35,7 @@ function updateEntry(id) {
 
     let data = {text,numberOfCalories}
 
-    fetch('http://laravel.loc/user/entries/' + id, {
+    fetch('/user/entries/' + id, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -47,7 +47,7 @@ function updateEntry(id) {
 }
 
 function deleteEntry(entryID) {
-    fetch("http://laravel.loc/user/entries/" + entryID, {
+    fetch("/user/entries/" + entryID, {
         method: 'DELETE',
     })
         .then((res) => res.text())
@@ -84,7 +84,7 @@ function filterTableByDatetime() {
 
     let data = {fromDate,toDate,fromHour,toHour}
     if(fromDate && toDate && fromHour && toHour) {
-        fetch("http://laravel.loc/user/filterEntries", {
+        fetch("/user/filterEntries", {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -100,7 +100,7 @@ function checkCalories() {
 
     if(document.getElementById("excepted-number-of-calories").value) {
         if(!isNaN(document.getElementById("excepted-number-of-calories").value)) {
-            fetch('http://laravel.loc/user/calories')
+            fetch('/user/calories')
                 .then(response => response.json())
                 .then(data => compareCaloriesWithExpected(data[0].calories));
         }

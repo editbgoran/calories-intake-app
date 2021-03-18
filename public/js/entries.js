@@ -23,7 +23,7 @@ function sendEntryDataToBackend() {
 }
 
 function editEntry(id) {
-    fetch("http://laravel.loc/entries/" + id, {
+    fetch("/entries/" + id, {
         method: 'GET',
     })
         .then((res) => res.text())
@@ -39,7 +39,7 @@ function updateEntry(id) {
 
     if (user_id && text && numberOfCalories) {
         let data = {user_id, text, numberOfCalories}
-        fetch('http://laravel.loc/entries/' + id, {
+        fetch('/entries/' + id, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -53,7 +53,7 @@ function updateEntry(id) {
 
 
 function deleteEntry(entryID) {
-    fetch("http://laravel.loc/entries/" + entryID, {
+    fetch("/entries/" + entryID, {
         method: 'DELETE',
     })
         .then((res) => res.text())
